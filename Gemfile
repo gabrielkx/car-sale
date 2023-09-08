@@ -71,6 +71,10 @@ group :test do
   gem "webdrivers"
 end
 
+gem 'mysql2'
+
 gem "bootstrap", "~> 5.3"
 
 gem "cssbundling-rails", "~> 1.2"
+
+gem "jsbundling-rails", "~> 1.1"

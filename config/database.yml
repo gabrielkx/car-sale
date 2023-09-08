@@ -1,25 +1,23 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
-#
+# config/database.yml
+
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+  username: root  # Substitua 'root' pelo nome de usuário do MySQL que você configurou
+  password: senha  # Substitua 'senha' pela senha que você configurou
+  host: localhost
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: car_listing_app_development  # Substitua pelo nome do seu banco de dados de desenvolvimento
 
-# Warning: The database defined as "test" will be erased and
-# re-generated from your development database when you run "rake".
-# Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: car_listing_app_test  # Substitua pelo nome do seu banco de dados de teste
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: car_listing_app_production  # Substitua pelo nome do seu banco de dados de produção
+  username: car_listing_app  # Substitua pelo nome de usuário do MySQL para produção
+  password: <%= ENV['CAR_LISTING_APP_DATABASE_PASSWORD'] %>  # Use a variável de ambiente para a senha de produção

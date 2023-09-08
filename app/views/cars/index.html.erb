@@ -1,0 +1,9 @@
+<h1 class="mt-4">Lista de Carros</h1>
+
+<ul class="list-group" id="carList">
+  <% @cars.each do |car| %>
+    <li class="list-group-item">
+      <%= link_to "#{car.make} #{car.model} #{car.year} #{car.price}", car %>
+    </li>
+  <% end %>
+</ul>

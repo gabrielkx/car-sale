@@ -1,0 +1,38 @@
+<%= form_with model: @car, local: true do |form| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "erro") %> impediram o registro deste carro:</h2>
+
+      <ul>
+        <% @car.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="mb-3">
+          <%= form.label :model, class: 'form-label' %>
+          <%= form.text_field :model, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :year, class: 'form-label' %>
+          <%= form.number_field :year, class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= form.label :price, class: 'form-label' %>
+          <%= form.number_field :price, class: 'form-control' %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit 'Salvar', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
