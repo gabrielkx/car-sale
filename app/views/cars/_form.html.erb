@@ -1,4 +1,4 @@
-<%= form_with model: @car, local: true do |form| %>
+<%= form_with model: @car, local: true, html: { multipart: true } do |form| %>
   <% if @car.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@car.errors.count, "erro") %> impediram o registro deste carro:</h2>
@@ -23,6 +23,17 @@
           <%= form.label :year, class: 'form-label' %>
           <%= form.number_field :year, class: 'form-control' %>
         </div>
+       
+      <div class="mb-3">
+        <%= form.label :images, class: 'form-label' %>
+        <input type="file" name="car[images][]" class="form-control" multiple="multiple">
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :images, class: 'form-label' %>
+        <input type="file" name="car[images][]" class="form-control" multiple="multiple">
+      </div>
+
 
         <div class="mb-3">
           <%= form.label :price, class: 'form-label' %>
@@ -32,7 +43,9 @@
         <div class="text-center">
           <%= form.submit 'Salvar', class: 'btn btn-primary' %>
         </div>
+        
       </div>
     </div>
   </div>
+  
 <% end %>

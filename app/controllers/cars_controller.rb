@@ -20,10 +20,10 @@ class CarsController < ApplicationController
       render 'new'
     end
   end
-
+  
   private
-
+  
   def car_params
-    params.require(:car).permit(:make, :model, :year, :price)
+    params.require(:car).permit(:make, :model, :year, :price, images: [])
   end
 end

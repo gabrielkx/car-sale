@@ -1,15 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- ... outros metadados ... -->
+  <title>Seu Aplicativo</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
   <!-- Adicione o link para o arquivo CSS do Bootstrap -->
   <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css' %>
-</head>
-<body>
-  <!-- Conteúdo da sua página -->
-  <%= yield %>
-
+  <!-- Adicione links para seus estilos CSS aqui, se necessário -->
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <!-- Adicione o link para o arquivo JavaScript do Bootstrap (opcional) -->
   <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js' %>
+  <!-- Adicione links para seus scripts JavaScript aqui, se necessário -->
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<body>
+
+<!-- Cabeçalho (Header) -->
+<header class="navbar navbar-expand-lg navbar-light bg-warning">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to 'Início', root_path, class: 'navbar-brand' %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to 'Registro de Automóvel', new_car_path, class: 'navbar-brand' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!-- Conteúdo principal -->
+<div class="container mt-4">
+  <%= yield %>
+</div>
+
+<!-- Rodapé (Footer) -->
+<footer class="footer custom-footer">
+  <div class="container">
+    <p>&copy; <%= Time.now.year %> Seu Aplicativo</p>
+  </div>
+</footer>
+
+
 </body>
 </html>
+

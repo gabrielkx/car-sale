@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+/* app/assets/stylesheets/application.css (ou application.scss) */
+@import 'bootstrap';
+
+.custom-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #FFA500;
+  padding: 20px 0; /* Ajuste a altura conforme necessário */
+  text-align: center;
+  color: white; /* Cor do texto */
+}
