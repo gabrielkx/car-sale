@@ -1,55 +1,106 @@
 <div class="container text-center">
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-12">
       <div class="border border-primary p-4 rounded">
         <h1 class="mt-4">Detalhes do Carro</h1>
 
-        <div class="mb-3">
-          <strong>Fabricante:</strong>
-          <%= @car.make %>
-        </div>
-
-        <div class="mb-3">
-          <strong>Modelo:</strong>
-          <%= @car.model %>
-        </div>
-
-        <div class="mb-3">
-          <strong>Ano:</strong>
-          <%= @car.year %>
-        </div>
-
-        <div class="mb-3">
-          <strong>Preço:</strong>
-          <%= number_to_currency(@car.price) %>
+        <div class="row mt-4">
+          <div class="col-md-6">
+            <!-- Exibição em tamanho grande -->
+            <div id="largeImageContainer" class="text-center border border-primary rounded" style="width: 500px; height: 400px; overflow: hidden;">
+              <!-- A imagem em tamanho grande será exibida aqui -->
+              <img src="<%= url_for(@car.images.first) %>" class="img-fluid" style="max-width: 100%; max-height: 100%;" />
+            </div>
+            <div class="thumbnail-container mt-4">
+              <% @car.images.each_with_index do |image, index| %>
+                <img src="<%= url_for(image) %>" class="img-fluid thumbnail" onclick="displayImage(this)" style="max-width: 100px; max-height: 80px; min-width: 100px; min-height: 80px;" />
+              <% end %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="car-info">
+              <div class="mb-3">
+                <strong>Fabricante:</strong>
+                <%= @car.make %>
+              </div>
+              <div class="mb-3">
+                <strong>Modelo:</strong>
+                <%= @car.model %>
+              </div>
+              <div class="mb-3">
+                <strong>Ano:</strong>
+                <%= @car.year %>
+              </div>
+              <div class="mb-3">
+                <strong>Preço:</strong>
+                <%= number_to_currency(@car.price) %>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      <h1 class="mt-4">Imagens do Carro</h1>
-
-      <!-- Adicione o carrossel aqui -->
-      <% if @car.images.attached? %>
-        <div id="carImageCarousel" class="carousel slide mt-4" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <% @car.images.each_with_index do |image, index| %>
-              <div class="carousel-item <%= 'active' if index.zero? %>">
-                <%= image_tag image, class: 'img-fluid' %>
-              </div>
-            <% end %>
-          </div>
-          <!-- Adicione setas de navegação -->
-          <a class="carousel-control-prev" href="#carImageCarousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
-          </a>
-          <a class="carousel-control-next" href="#carImageCarousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Próxima</span>
-          </a>
-        </div>
-      <% else %>
-        <p class="mt-4">Nenhuma imagem disponível</p>
-      <% end %>
     </div>
   </div>
 </div>
+
+<style>
+/* Estilize a miniatura clicada */
+.thumbnail.selected-image {
+  border: 4px solid #007bff; /* Borda grossa em torno da miniatura clicada */
+}
+
+/* Estilize as miniaturas das imagens */
+.thumbnail-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px; /* Espaçamento entre as miniaturas */
+}
+
+.thumbnail {
+  max-width: 100px; /* Largura máxima das miniaturas */
+  max-height: 80px; /* Altura máxima das miniaturas */
+  min-width: 100px; /* Largura mínima das miniaturas */
+  min-height: 80px; /* Altura mínima das miniaturas */
+  border: 2px solid #ddd; /* Cor e estilo da borda das miniaturas */
+  cursor: pointer;
+}
+
+/* Limitar tamanho máximo da imagem original */
+#largeImageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Estilize a seção de informações do carro */
+.car-info {
+  background-color: #f8f9fa; /* Cor de fundo da seção de informações */
+  padding: 20px;
+  border: 2px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+</style>
+
+<script>
+function displayImage(thumbnail) {
+  // Remove a classe "selected-image" de todas as miniaturas
+  var thumbnails = document.querySelectorAll('.thumbnail');
+  thumbnails.forEach(function (thumb) {
+    thumb.classList.remove('selected-image');
+  });
+
+  // Adiciona a classe "selected-image" à imagem clicada
+  thumbnail.classList.add('selected-image');
+
+  // Obtém a URL da imagem em tamanho grande
+  var largeImageUrl = thumbnail.src;
+
+  // Atualiza a imagem dentro do quadro central
+  var largeImage = document.querySelector("#largeImageContainer img");
+  largeImage.src = largeImageUrl;
+  
+  // Adiciona a borda grossa à imagem grande selecionada
+  largeImage.classList.add('selected-image');
+}
+</script>
