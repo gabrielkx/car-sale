@@ -23,17 +23,16 @@
           <%= form.label :year, class: 'form-label' %>
           <%= form.number_field :year, class: 'form-control' %>
         </div>
+
+        <div class="mb-3">
+          <%= form.label :make, class: 'form-label' %>
+          <%= form.text_field :model, class: 'form-control' %>
+        </div>  
        
-      <div class="mb-3">
-        <%= form.label :images, class: 'form-label' %>
-        <input type="file" name="car[images][]" class="form-control" multiple="multiple">
-      </div>
-
-      <div class="mb-3">
-        <%= form.label :images, class: 'form-label' %>
-        <input type="file" name="car[images][]" class="form-control" multiple="multiple">
-      </div>
-
+        <div class="mb-3">
+          <%= form.label :images, class: 'form-label' %>
+          <input type="file" name="car[images][]" class="form-control" multiple="multiple">
+        </div>
 
         <div class="mb-3">
           <%= form.label :price, class: 'form-label' %>

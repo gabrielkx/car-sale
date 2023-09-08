@@ -4,6 +4,9 @@
   <% @cars.each do |car| %>
     <li class="list-group-item">
       <%= link_to "#{car.make} #{car.model} #{car.year} #{car.price}", car %>
+      <%= form_with model: car, method: :delete, data: { confirm: 'Tem certeza que deseja excluir este carro?' } do |f| %>
+        <%= f.submit 'X', class: 'btn btn-danger btn-sm float-end' %>
+      <% end %>
     </li>
   <% end %>
 </ul>
