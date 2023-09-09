@@ -1,0 +1,66 @@
+/* Style the pagination container */
+.pagination-container {
+  position: fixed;
+  bottom: 10%; /* Position it at the bottom of the page */
+  left: 0;
+  right: 0;
+  padding: 10px 0; /* Add padding for spacing (adjust as needed) */
+  z-index: 1000; /* Ensure it's above other content */
+  display: flex;
+  justify-content: center; /* Center-align the content horizontally */
+}
+
+/* Style each pagination link */
+.pagination a {
+  padding: 8px 12px; /* Adjust the padding as needed */
+  border: 1px solid #ff6600; /* Change border color to orange */
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ff6600; /* Change text color to orange */
+  background-color: #fff; /* Change background color to white */
+  margin: 0 5px; /* Add some spacing between links */
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+}
+
+/* Style the current page link */
+.pagination .current {
+  padding: 8px 12px; /* Adjust the padding as needed */
+  background-color: #ff6600; /* Change background color to orange */
+  color: #fff; /* Change text color to white */
+  font-weight: bold;
+  border: 1px solid #ff6600; /* Change border color to orange */
+  border-radius: 5px;
+  margin: 0 5px; /* Add some spacing between links */
+}
+
+/* Style the "Previous" and "Next" buttons */
+.pagination .prev,
+.pagination .next {
+  padding: 8px 12px; /* Adjust the padding as needed */
+  border: 1px solid #ff6600; /* Change border color to orange */
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ff6600; /* Change text color to orange */
+  background-color: #fff; /* Change background color to white */
+  margin: 0 5px; /* Add some spacing between links */
+  display: flex;
+  align-items: center;
+}
+
+/* Style the "Previous" and "Next" buttons on hover */
+.pagination .prev:hover,
+.pagination .next:hover {
+  background-color: #ff6600; /* Change background color to orange on hover */
+  color: #fff; /* Change text color to white on hover */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Style the "Previous" and "Next" buttons when clicked */
+.pagination .prev.active,
+.pagination .next.active {
+  background-color: #ff6600; /* Change background color to orange when clicked */
+  color: #fff; /* Change text color to white when clicked */
+  transition: background-color 0.3s, color 0.3s;
+}

@@ -1,12 +1,29 @@
+<!-- Adicione esta seção à sua página index.html.erb -->
 <h1 class="mt-4">Lista de Carros</h1>
 
-<ul class="list-group" id="carList">
+<div class="row">
   <% @cars.each do |car| %>
-    <li class="list-group-item">
-      <%= link_to "#{car.make} #{car.model} #{car.year} #{car.price}", car %>
-      <%= form_with model: car, method: :delete, data: { confirm: 'Tem certeza que deseja excluir este carro?' } do |f| %>
-        <%= f.submit 'X', class: 'btn btn-danger btn-sm float-end' %>
-      <% end %>
-    </li>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <%= link_to car do %>
+          <% if car.thumbnail.present? %>
+            <%= image_tag car.thumbnail %>
+          <% else %>
+            <%= image_tag 'logo.png', alt: 'Miniatura Padrão', style: 'width: 100px; height: 100px;' %>
+          <% end %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= car.make %> <%= car.model %> (<%= car.year %>)</h5>
+          <p class="card-text"><strong>Preço:</strong> <%= number_to_currency(car.price) %></p>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
+
+<div class="container">
+  <!-- Pagination container above the footer -->
+  <div class="pagination-container">
+    <%= will_paginate @cars, previous_label: 'Anterior', next_label: 'Próximo', class: 'pagination' %>
+  </div>
+</div>
