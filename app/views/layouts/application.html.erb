@@ -16,34 +16,42 @@
 </head>
 <body>
 
-<!-- Cabeçalho (Header) -->
-<header class="navbar navbar-expand-lg header">
+<!-- Menu Vertical -->
+<nav class="navbar navbar-expand-lg header">
   <div class="container">
-    <!-- Logo -->
-    <a class="navbar-brand" href="<%= root_path %>">
-      <%= image_tag('/logo.png', alt: 'Logo da Sua Marca', class: 'logo-img', style: 'max-height: 40px;') %>
-    </a>
-    <!-- Botão de alternância para menu móvel -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- Itens do menu -->
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to 'Início', root_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to 'Registro de Automóvel', new_car_path, class: 'nav-link' %>
-        </li>
-      </ul>
-    </div>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to 'Início', root_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Registro de Automóvel', new_car_path, class: 'nav-link' %>
+      </li>
+      <!-- Adicione mais itens de menu conforme necessário -->
+    </ul>
   </div>
-</header>
+</nav>
 
 <!-- Conteúdo principal -->
-<div class="container mt-4">
-  <%= yield %>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Conteúdo da página -->
+    <div class="col-md-3 sidebar">
+      <!-- Conteúdo do menu -->
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Item de Menu 1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Item de Menu 2</a>
+        </li>
+        <!-- Adicione mais itens de menu conforme necessário -->
+      </ul>
+    </div>
+    <div class="col-md-9">
+      <!-- Conteúdo da página principal -->
+      <%= yield %>
+    </div>
+  </div>
 </div>
 
 <!-- Rodapé (Footer) -->

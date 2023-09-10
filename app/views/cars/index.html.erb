@@ -1,5 +1,8 @@
-<!-- Adicione esta seção à sua página index.html.erb -->
 <h1 class="mt-4">Lista de Carros</h1>
+<!-- Inclua o CSS da view diretamente -->
+<style>
+  <%= File.read(File.join(Rails.root, 'app', 'views', 'cars', '_index.css')) %>
+</style>
 
 <div class="row">
   <% @cars.each do |car| %>
