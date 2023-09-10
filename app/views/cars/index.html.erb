@@ -1,32 +1,45 @@
-<h1 class="mt-4">Lista de Carros</h1>
-<!-- Inclua o CSS da view diretamente -->
-<style>
-  <%= File.read(File.join(Rails.root, 'app', 'views', 'cars', '_index.css')) %>
-</style>
+<div class="container">
+  <h1 class="mt-4">Lista de Carros</h1>
 
-<div class="row">
-  <% @cars.each do |car| %>
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <%= link_to car do %>
-          <% if car.thumbnail.present? %>
-            <%= image_tag car.thumbnail %>
-          <% else %>
-            <%= image_tag 'logo.png', alt: 'Miniatura Padrão', style: 'width: 100px; height: 100px;' %>
+  <!-- Inclua o CSS da view diretamente -->
+  <style>
+    <%= File.read(File.join(Rails.root, 'app', 'views', 'cars', '_index.css')) %>
+  </style>
+
+  <div class="row">
+    <% @cars.each do |car| %>
+      <div class="col-md-3 mb-3">
+        <div class="card text-center"> <!-- Adicione a classe 'text-center' para centralizar o conteúdo -->
+          <%= link_to car do %>
+            <div class="d-flex justify-content-center align-items-center image-container" style="height: 200px;">
+              <% if car.thumbnail.present? %>
+\                <%= image_tag car.thumbnail, class: 'img-fluid' %> <!-- Remova o ponto antes de 'image-container' e 'img' -->
+              <% else %>
+                <%= image_tag 'logo.png', alt: 'Miniatura Padrão', style: 'width: 100px; height: 100px;' %>
+              <% end %>
+            </div>
           <% end %>
-        <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= car.make %> <%= car.model %> (<%= car.year %>)</h5>
-          <p class="card-text"><strong>Preço:</strong> <%= number_to_currency(car.price) %></p>
+          <div class="card-body">
+            <p class="card-text"><%= car.title %> </p>
+            <p class="card-text"><strong>Preço:</strong> <%= number_to_currency(car.price) %></p>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div>
 
-<div class="container">
-  <!-- Pagination container above the footer -->
-  <div class="pagination-container">
-    <%= will_paginate @cars, previous_label: 'Anterior', next_label: 'Próximo', class: 'pagination' %>
+  <div class="container">
+    <!-- Pagination container above the footer -->
+    <div class="pagination-container">
+      <%= will_paginate @cars, previous_label: 'Anterior', next_label: 'Próximo', class: 'pagination' %>
+    </div>
   </div>
 </div>
+
+<style>
+  .image-container img {
+    width: 15gem0px;
+    height: 150px;
+  }
+</style>
+<%= render partial: "menu/vertical_menu" %>

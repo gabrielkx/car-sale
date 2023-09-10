@@ -1,15 +1,15 @@
 <div class="container text-center">
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <div class="border border-primary p-4 rounded">
-        <h1 class="mt-4">Detalhes do Carro</h1>
-
+      <div class="border border-primary p-4 rounded mt-4">
         <div class="row mt-4">
           <div class="col-md-6">
+            <!-- Título do carro fora do container da imagem -->
+            <h2 class="car-title mb-4 text-primary"><%= @car.title %></h2>
             <!-- Exibição em tamanho grande -->
-            <div id="largeImageContainer" class="text-center border border-primary rounded" style="width: 500px; height: 400px; overflow: hidden;">
+            <div id="largeImageContainer" class="text-center rounded" style="width: 100%; height: 400px; overflow: hidden; position: relative;">
               <!-- A imagem em tamanho grande será exibida aqui -->
-              <img src="<%= url_for(@car.images.first) %>" class="img-fluid" style="max-width: 100%; max-height: 100%;" />
+              <img src="<%= url_for(@car.images.first) %>" class="img-fluid" style="width: 100%; max-height: 100%;" />
             </div>
             <div class="thumbnail-container mt-4">
               <% @car.images.each_with_index do |image, index| %>
@@ -17,21 +17,21 @@
               <% end %>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="car-info">
-              <div class="mb-3">
+          <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <div class="car-info p-4 bg-light rounded shadow">
+              <div class="mb-4">
                 <strong>Fabricante:</strong>
                 <%= @car.make %>
               </div>
-              <div class="mb-3">
+              <div class="mb-4">
                 <strong>Modelo:</strong>
                 <%= @car.model %>
               </div>
-              <div class="mb-3">
+              <div class="mb-4">
                 <strong>Ano:</strong>
                 <%= @car.year %>
               </div>
-              <div class="mb-3">
+              <div class="mb-4">
                 <strong>Preço:</strong>
                 <%= number_to_currency(@car.price) %>
               </div>
@@ -42,6 +42,7 @@
     </div>
   </div>
 </div>
+
 
 <style>
 /* Estilize a miniatura clicada */

@@ -17,7 +17,7 @@
 <body>
 
 <!-- Menu Vertical -->
-<nav class="navbar navbar-expand-lg header">
+<nav class="navbar navbar-expand-lg header" style="z-index: 1000;">
   <div class="container">
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -35,19 +35,11 @@
 <div class="container-fluid">
   <div class="row">
     <!-- Conteúdo da página -->
-    <div class="col-md-3 sidebar">
-      <!-- Conteúdo do menu -->
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Item de Menu 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Item de Menu 2</a>
-        </li>
+    <div class="col-md-6 sidebar">
         <!-- Adicione mais itens de menu conforme necessário -->
       </ul>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-12">
       <!-- Conteúdo da página principal -->
       <%= yield %>
     </div>
@@ -55,7 +47,7 @@
 </div>
 
 <!-- Rodapé (Footer) -->
-<footer class="footer custom-footer">
+<footer class="footer custom-footer" style="z-index: 1000;">
   <div class="container">
     <p>&copy; <%= Time.now.year %> Top Multimarcas</p>
   </div>

@@ -2,7 +2,7 @@ class CarsController < ApplicationController
 
   # app/controllers/cars_controller.rb
   def index
-    @cars = Car.paginate(page: params[:page], per_page: 9) # 9 carros por página, ajuste conforme necessário
+    @cars = Car.paginate(page: params[:page], per_page: 8) # 9 carros por página, ajuste conforme necessário
   end
 
   def new
@@ -31,6 +31,6 @@ class CarsController < ApplicationController
   private
   
   def car_params
-    params.require(:car).permit(:make, :model, :year, :price, images: [])
+    params.require(:car).permit(:make, :title, :model, :year, :price, images: [])
   end
 end
