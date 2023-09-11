@@ -1,22 +1,23 @@
-<div class="sidebar">
-    <h2>Filtros</h2>
-    <ul>
-        <%= form_tag(filter_cars_path, method: :get) do %>
-            <div class="filter-option">
-                <%= label_tag 'make', 'Marca' %>
-                <%= select_tag :make, options_for_select([['Todas', nil]] + Car.distinct.pluck(:make).map { |make| [make, make] }), class: 'form-control' %>
-            </div>
-            <div class="filter-option">
-                <%= label_tag 'year', 'Ano' %>
-                <%= select_tag :year, options_for_select([['Todos', nil]] + Car.distinct.pluck(:year).map { |year| [year, year] }), class: 'form-control' %>
-            </div>
-            <div class="filter-option">
-                <%= label_tag 'model', 'Modelo' %>
-                <%= text_field_tag :model, params[:model], class: 'form-control' %>
-            </div>
-            <div class="filter-button">
-                <%= submit_tag 'Filtrar', class: 'btn btn-primary btn-sm  btn-site' %>
-            </div>
-        <% end %>
-    </ul>
+<div class="container">
+    <div class="sidebar">
+        <ul>
+            <%= form_tag(filter_cars_path, method: :get) do %>
+                <div class="filter-option">
+                    <%= label_tag 'make', 'Marca' %>
+                    <%= select_tag :make, options_for_select([['Todas', nil]] + Car.distinct.pluck(:make).map { |make| [make, make] }), class: 'form-control' %>
+                </div>
+                <div class="filter-option">
+                    <%= label_tag 'year', 'Ano' %>
+                    <%= select_tag :year, options_for_select([['Todos', nil]] + Car.distinct.pluck(:year).map { |year| [year, year] }), class: 'form-control' %>
+                </div>
+                <div class="filter-option">
+                    <%= label_tag 'model', 'Modelo' %>
+                    <%= text_field_tag :model, params[:model], class: 'form-control' %>
+                </div>
+                <div class="filter-button">
+                    <%= submit_tag 'Filtrar', class: 'btn btn-primary btn-sm  btn-site' %>
+                </div>
+            <% end %>
+        </ul>
+    </div>
 </div>

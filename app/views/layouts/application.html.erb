@@ -17,9 +17,13 @@
 <body>
 
 <!-- Header -->
+<!-- Header -->
 <nav class="navbar navbar-expand-lg header" style="z-index: 1000;">
-  <div class="container">
-    <ul class="navbar-nav">
+    <%= link_to root_path, class: 'navbar-brand' do %>
+      <%= image_tag 'logo.png', alt: 'Logo', class: 'logo-small mt-2 ml-2' %> <!-- Adicione as classes 'mt-2' e 'ml-2' para adicionar margens superior e esquerda -->
+    <% end %>
+    
+    <ul class="navbar-nav ml-3"> <!-- Adicione uma margem à esquerda para separar o logo das opções de menu -->
       <li class="nav-item">
         <%= link_to 'Início', root_path, class: 'nav-link' %>
       </li>
@@ -28,28 +32,25 @@
       </li>
       <!-- Adicione mais itens de menu conforme necessário -->
     </ul>
-  </div>
 </nav>
 
 <!-- Conteúdo principal -->
 <div class="container-fluid">
   <div class="row">
-    <!-- Conteúdo da página -->
-    <div class="col-md-6 sidebar">
-        <!-- Adicione mais itens de menu conforme necessário -->
-      </ul>
+    <!-- Menu vertical à esquerda -->
+    <div class="col-md-2 sidebar" style="z-index: 1;"> <!-- Ajuste o z-index para 1 -->
+      <%= render partial: 'layouts/vertical_menu' %>
     </div>
-    <div class="col-md-12">
-      <!-- Conteúdo da página principal -->
+
+    <!-- Conteúdo principal no centro -->
+    <div class="col-md-10" style="margin-top: 20px;">
       <%= yield %>
     </div>
   </div>
 </div>
 
-<%= render partial: 'layouts/vertical_menu' %>
-
 <!-- Rodapé (Footer) -->
-<footer class="footer custom-footer" style="z-index: 1000;">
+<footer class="footer custom-footer" style="z-index: 1000;"> <!-- Ajuste o z-index para 2 -->
   <div class="container">
     <p>&copy; <%= Time.now.year %> Top Multimarcas</p>
   </div>

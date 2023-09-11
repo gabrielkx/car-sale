@@ -31,7 +31,7 @@
 .header {
   background-color: #ff6600;
   color: white; /* Cor do texto */
-  padding: 8px 0; /* Ajuste a altura conforme necessário */
+  padding: 0px 50px ; /* Ajuste a altura conforme necessário */
 }
 
 
@@ -55,4 +55,14 @@
   background-color: #ff6600;
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
+}
+
+.logo-small {
+  width: 50px; /* Defina a largura desejada para o logotipo pequeno */
+  height: 50px; /* Isso mantém a proporção original da imagem */
+}
+
+.sidebar {
+  margin-top: 60px; /* Ajuste a margem superior conforme necessário */
+  
 }
