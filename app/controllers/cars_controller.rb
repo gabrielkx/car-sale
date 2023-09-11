@@ -27,8 +27,28 @@ class CarsController < ApplicationController
       render 'new'
     end
   end
+
+  def filter
+    @filtered_cars = Car.all
   
-  private
+    if params[:make].present?
+      @filtered_cars = @filtered_cars.where(make: params[:make])
+    end
+  
+    if params[:year].present?
+      @filtered_cars = @filtered_cars.where(year: params[:year])
+    end
+  
+    if params[:model].present?
+      @filtered_cars = @filtered_cars.where('lower(model) LIKE ?', "%#{params[:model].downcase}%")
+    end
+  
+    @cars = @filtered_cars.paginate(page: params[:page], per_page: 8)
+  
+    render 'index' # Redirecione para a view de índice com os resultados filtrados
+  end
+  
+  private  
   
   def car_params
     params.require(:car).permit(:make, :title, :description, :model, :year, :price, images: [])

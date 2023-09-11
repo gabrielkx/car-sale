@@ -34,3 +34,25 @@
   padding: 8px 0; /* Ajuste a altura conforme necessário */
 }
 
+
+/* Estilo para os botões do site */
+.btn-site {
+  border: 1px solid #ff6600;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ff6600;
+  background-color: #fff;
+}
+
+/* Restante do estilo permanece o mesmo */
+.btn-site:hover {
+  background-color: #ff6600;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-site.active {
+  background-color: #ff6600;
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
