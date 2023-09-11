@@ -1,11 +1,5 @@
 <div class="container">
   <h1 class="mt-4">Lista de Carros</h1>
-
-  <!-- Inclua o CSS da view diretamente -->
-  <style>
-    <%= File.read(File.join(Rails.root, 'app', 'views', 'cars', '_index.css')) %>
-  </style>
-
   <div class="row">
     <% @cars.each do |car| %>
       <div class="col-md-3 mb-3">
@@ -35,11 +29,3 @@
     </div>
   </div>
 </div>
-
-<style>
-  .image-container img {
-    width: 15gem0px;
-    height: 150px;
-  }
-</style>
-<%= render partial: "menu/vertical_menu" %>
