@@ -1,0 +1,58 @@
+
+<style>
+  .whatsapp-button {
+    position: fixed;
+    bottom: 70px;
+    right: 70px;
+    z-index: 9999;
+    cursor: pointer;
+    width: 60px; /* Defina a largura desejada para o botão */
+    height: 60px; /* Defina a altura desejada para o botão */
+    background-image: url('<%= asset_path('support.svg') %>'); /* Use a imagem support.svg como plano de fundo */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+  }
+
+  .whatsapp-button:hover {
+    background-color: #128c7e; 
+  }
+</style>
+
+
+<!-- WhatsApp Balloon JavaScript -->
+<script>
+  function openWhatsapp() {
+    // Set the message
+    var userName = "Nome do Usuário"; // Substitua pelo nome do usuário atual
+    var userCompany = "Nome da Empresa"; // Substitua pelo nome da empresa do usuário atual
+    var message = "Preciso de ajuda! Meu nome é " + userName + " e sou da " + userCompany;
+    var encodedMessage = encodeURI(message);
+
+    // Get the value of the `whatsapp_option` element
+    var whatsapp_option = "true"; // Substitua pelo valor correto, 'true' ou 'false'
+
+    // Check the value of the `whatsapp_option` element
+    if (whatsapp_option == 'true') {
+      // If `whatsapp_option` is 'true', open WhatsApp mobile
+      window.open('https://wa.me/53991607600?text=' + encodedMessage, '_blank');
+    } else {
+      // If `whatsapp_option` is not 'true', open WhatsApp web
+      window.open('https://web.whatsapp.com/send?phone=53991607600&text=' + encodedMessage, '_blank');
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Create the WhatsApp button element
+    var whatsappButton = document.createElement("div");
+    whatsappButton.className = "whatsapp-button";
+
+    // Add a click event listener to the button
+    whatsappButton.addEventListener("click", openWhatsapp);
+
+    // Append the button to the body of the page
+    document.body.appendChild(whatsappButton);
+  });
+</script>

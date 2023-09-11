@@ -16,8 +16,6 @@
 </head>
 <body>
 
-<!-- Header -->
-<!-- Header -->
 <nav class="navbar navbar-expand-lg header" style="z-index: 1000;">
     <%= link_to root_path, class: 'navbar-brand' do %>
       <%= image_tag 'logo.png', alt: 'Logo', class: 'logo-small mt-2 ml-2' %> <!-- Adicione as classes 'mt-2' e 'ml-2' para adicionar margens superior e esquerda -->
@@ -58,3 +56,8 @@
 
 </body>
 </html>
+
+<div class="whatsapp-button">
+  <%= render 'layouts/whatsapp_balloon' %>
+</div>
+
