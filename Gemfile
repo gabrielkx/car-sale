@@ -88,6 +88,8 @@ end
 
 gem 'mysql2'
 
+gem 'pg'
+
 # gem "bootstrap", "~> 5.3"
 
 # gem "cssbundling-rails", "~> 1.2"
